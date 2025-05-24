@@ -1,0 +1,119 @@
+package ppai_G10_3K6;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class OrdenDeInspeccion {
+
+    private double numeroOrden;
+    private LocalDateTime fechaHoraInicio;
+    private LocalDateTime fechaHoraFinalizacion;
+    private String observacionCierre;
+    private Empleado empleado;
+    private EstacionSismologica estacionSismologica;
+    private Estado estado;
+
+    public OrdenDeInspeccion(double numeroOrden, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinalizacion, String observacionCierre) {
+        this.numeroOrden = numeroOrden;
+        this.fechaHoraInicio = fechaHoraInicio;
+        this.fechaHoraFinalizacion = fechaHoraFinalizacion;
+        this.observacionCierre = observacionCierre;
+    }
+
+    public OrdenDeInspeccion(double numeroOrden, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinalizacion, String observacionCierre, Empleado empleado, EstacionSismologica estacionSismologica, Estado estado) {
+        this.numeroOrden = numeroOrden;
+        this.fechaHoraInicio = fechaHoraInicio;
+        this.fechaHoraFinalizacion = fechaHoraFinalizacion;
+        this.observacionCierre = observacionCierre;
+        this.empleado = empleado;
+        this.estacionSismologica = estacionSismologica;
+        this.estado = estado;
+    }
+
+    public double getNumeroOrden() {
+        return numeroOrden;
+    }
+
+    public void setNumeroOrden(double numeroOrden) {
+        this.numeroOrden = numeroOrden;
+    }
+
+    public LocalDateTime getFechaHoraInicio() {
+        return fechaHoraInicio;
+    }
+
+    public void setFechaHoraInicio(LocalDateTime fechaHoraInicio) {
+        this.fechaHoraInicio = fechaHoraInicio;
+    }
+
+    public LocalDateTime getFechaHoraFinalizacion() {
+        return fechaHoraFinalizacion;
+    }
+
+    public void setFechaHoraFinalizacion(LocalDateTime fechaHoraFinalizacion) {
+        this.fechaHoraFinalizacion = fechaHoraFinalizacion;
+    }
+
+    public String getObservacionCierre() {
+        return observacionCierre;
+    }
+
+    public void setObservacionCierre(String observacionCierre) {
+        this.observacionCierre = observacionCierre;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public EstacionSismologica getEstacionSismologica() {
+        return estacionSismologica;
+    }
+
+    public void setEstacionSismologica(EstacionSismologica estacionSismologica) {
+        this.estacionSismologica = estacionSismologica;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "OrdenDeInspeccion{" +
+                "numeroOrden=" + numeroOrden +
+                ", fechaHoraInicio=" + fechaHoraInicio +
+                ", fechaHoraFinalizacion=" + fechaHoraFinalizacion +
+                ", observacionCierre='" + observacionCierre + '\'' +
+                ", empleado=" + empleado +
+                ", estacionSismologica=" + estacionSismologica +
+                ", estado=" + estado +
+                '}';
+    }
+
+    public void sosEmpleadoLogueado(){}
+
+    public void validarEstado(){}
+
+    public  void obtenerDatosEstacion(){}
+
+    public  void actualizarEstado(){}
+
+    public void conocerEmpleado(){}
+
+    public void conocerEstacionSismologica(){}
+
+    public void conocerEstado(){}
+
+
+}
