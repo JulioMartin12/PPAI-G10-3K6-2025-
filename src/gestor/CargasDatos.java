@@ -114,29 +114,6 @@ public class CargasDatos {
         sesiones.add(sesion3);
         sesiones.add(sesion5);
 
-        Sismografo sismo1 = new Sismografo("SMG-100", "MarcaX", 2022);
-        Sismografo sismo2 = new Sismografo("SMG-200", "MarcaY", 2023);
-        Sismografo sismo3 = new Sismografo("SMG-300", "MarcaZ", 2021);
-
-        EstacionSismologica estacion1 = new EstacionSismologica(
-                "EST001", "DOC-12345", LocalDateTime.of(2023, 3, 15, 10, 30),
-                -34.6037, -58.3816, "Estación Central", 987654, sismo1
-        );
-
-        EstacionSismologica estacion2 = new EstacionSismologica(
-                "EST002", "DOC-54321", LocalDateTime.of(2024, 1, 22, 8, 15),
-                -40.8123, -65.0321, "Estación Sur", 123456, sismo2
-        );
-
-        EstacionSismologica estacion3 = new EstacionSismologica(
-                "EST003", "DOC-67890", LocalDateTime.of(2022, 7, 9, 14, 45),
-                -31.4201, -64.1888, "Estación Norte", 456789, sismo3
-        );
-
-        estaciones.add(estacion1);
-        estaciones.add(estacion2);
-        estaciones.add(estacion3);
-
 
 
     }
