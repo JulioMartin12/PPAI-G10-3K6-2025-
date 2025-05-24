@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 
 public class GestorCierreOrdenInspeccion {
-
+    private  CargasDatos cargarDatos;
     private LocalDateTime fechaActual;
     private OrdenDeInspeccion ordenSeleccionada;
     private Empleado empleadoLogueado;
@@ -15,11 +15,12 @@ public class GestorCierreOrdenInspeccion {
     private  Sismografo sismografoElegido;
     private String observacion;
     private  Sesion sesionLogueado;
+    private  Usuario usuarioLogueado;
 
 
 
     public GestorCierreOrdenInspeccion() {
-
+        cargarDatos = new CargasDatos();
     }
 
 
@@ -27,11 +28,25 @@ public class GestorCierreOrdenInspeccion {
         return fechaActual;
     }
 
-    public void opcionCerrarOrdenInspeccion() {}
+    public boolean opcionCerrarOrdenInspeccion() {
+        return this.buscarEmpleadoLogueado();
+    }
 
-    public void buscarEmpleadoLogueado(){}
+    public boolean buscarEmpleadoLogueado(){
+        for (Sesion sesion : this.cargarDatos.getSesiones()){
+            if(sesion.getFechaHoraHasta() == null) {
+                this.sesionLogueado = sesion;
+                this.usuarioLogueado = sesion.getUsuario();
+                this.buscarOrdenes();
+             return true;
+            }
+        }
+        return false;
+    }
 
-    public void buscarOrdenes(){}
+    public void buscarOrdenes(){
+
+    }
 
     public void tomarOrdenSelec(){}
 
@@ -60,6 +75,7 @@ public class GestorCierreOrdenInspeccion {
     public void notificarResponsable(){}
 
     public  void finCU(){}
+
 
 
 
