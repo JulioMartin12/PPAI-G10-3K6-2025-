@@ -1,11 +1,21 @@
 package boundary;
 
-public class PantallaCierreOrdenInspeccion {
+import gestor.GestorCierreOrdenInspeccion;
 
+public class PantallaCierreOrdenInspeccion {
+    private GestorCierreOrdenInspeccion gestor = new GestorCierreOrdenInspeccion();
 
     public void habilitarventana() {}
 
-    public void seleccionarOpcionCerrarOrdenInspeccion() {}
+    public void seleccionarOpcionCerrarOrdenInspeccion() {
+        if(this.gestor.opcionCerrarOrdenInspeccion()) {
+            System.out.printf("Logueado");
+            gestor.buscarEmpleadoLogueado();
+        }else {
+            System.out.printf("No SOS EL LOGUEADO");
+        }
+
+    }
 
     public void mostarMernsajeBusquedaVacia(){}
 

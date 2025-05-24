@@ -8,6 +8,11 @@ public class Sesion {
     private LocalDateTime fechaHoraHasta;
     private Usuario usuario;
 
+    public Sesion(LocalDateTime fechaHoraDesde,Usuario usuario) {
+        this.fechaHoraDesde = fechaHoraDesde;
+        this.usuario = usuario;
+    }
+
     public Sesion(LocalDateTime fechaHoraDesde, LocalDateTime fechaHoraHasta, Usuario usuario) {
         this.fechaHoraDesde = fechaHoraDesde;
         this.fechaHoraHasta = fechaHoraHasta;
