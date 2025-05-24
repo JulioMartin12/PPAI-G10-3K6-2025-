@@ -1,9 +1,6 @@
-package ppai_G10_3K6;
+package models;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Sismografo {
 
