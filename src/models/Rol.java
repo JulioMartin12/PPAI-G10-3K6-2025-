@@ -2,7 +2,7 @@ package models;
 
 public class Rol {
 
-	//Atributos Simples
+
 	private String descripcionRol;
 	private String nombre;
 
