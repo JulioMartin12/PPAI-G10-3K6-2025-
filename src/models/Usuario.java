@@ -1,7 +1,4 @@
-package ppai_G10_3K6;
-
-import java.util.ArrayList;
-import java.util.List;
+package models;
 
 public class Usuario {
 

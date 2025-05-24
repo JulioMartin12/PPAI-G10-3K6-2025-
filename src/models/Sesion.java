@@ -1,4 +1,4 @@
-package ppai_G10_3K6;
+package models;
 
 
 import java.time.LocalDateTime;

@@ -1,6 +1,6 @@
 package gestor;
 
-import ppai_G10_3K6.*;
+import models.*;
 
 import java.time.LocalDateTime;
 
