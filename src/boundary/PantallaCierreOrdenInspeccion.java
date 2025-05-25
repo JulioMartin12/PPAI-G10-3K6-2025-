@@ -11,8 +11,7 @@ public class PantallaCierreOrdenInspeccion {
         if(this.gestor.opcionCerrarOrdenInspeccion()) {
             System.out.printf("Logueado");
             gestor.buscarEmpleadoLogueado();
-            gestor.buscarOrdenes();
-            System.out.printf("" + gestor.getOrdenes().size());
+            System.out.printf("   " + gestor.getOrdenes().size());
         }else {
             System.out.printf("No SOS EL LOGUEADO");
         }

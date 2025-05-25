@@ -4,20 +4,27 @@ public class Estado {
 
     private String nombre;
     private String ambito;
-    private String nombreEstado;
+    private String descripcion;
 
 
-    public Estado(String ambito, String nombreEstado) {
-        this.ambito = ambito;
-        this.nombreEstado = nombreEstado;
+    public Estado(String nombre,String descripcion) {
+        this.nombre =nombre;
+        this.descripcion = descripcion;
     }
 
-    public Estado(String nombre, String ambito, String nombreEstado) {
+    public Estado(String nombre, String descripcion , String ambito) {
         this.nombre = nombre;
         this.ambito = ambito;
-        this.nombreEstado = nombreEstado;
+        this.descripcion = descripcion;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     public String getAmbito() {
         return ambito;
@@ -27,12 +34,12 @@ public class Estado {
         this.ambito = ambito;
     }
 
-    public String getNombreEstado() {
-        return nombreEstado;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNombreEstado(String nombreEstado) {
-        this.nombreEstado = nombreEstado;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
@@ -40,12 +47,12 @@ public class Estado {
         return "Estado{" +
                 "nombre='" + nombre + '\'' +
                 ", ambito='" + ambito + '\'' +
-                ", nombreEstado='" + nombreEstado + '\'' +
+                ", descripcion='" + descripcion + '\'' +
                 '}';
     }
 
     public boolean sosCompletamenteRealizada() {
-    	return (this.nombre == "Completamente Realizada");
+    	return (this.getNombre() == "Completamente Realizada");
     }
     
     public boolean sosFueraDeServicio() {

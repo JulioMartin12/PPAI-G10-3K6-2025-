@@ -27,6 +27,8 @@ public class GestorCierreOrdenInspeccion {
 
 
 
+
+
 	public GestorCierreOrdenInspeccion() {
         cargarDatos = new CargasDatos();
     }
@@ -59,9 +61,10 @@ public class GestorCierreOrdenInspeccion {
 
     public boolean buscarEmpleadoLogueado(){
         for (Sesion sesion : this.cargarDatos.getSesiones()){
-            if(sesion.getFechaHoraHasta() == null) {
+            if(sesion.sosSesionActual(this.cargarDatos.enElsistema())!=null) {
                 this.sesionLogueado = sesion;
                 this.usuarioLogueado = sesion.getUsuario();
+                this.empleadoLogueado = this.usuarioLogueado.getEmpleado();
                 this.buscarOrdenes();
              return true;
             }
@@ -70,16 +73,19 @@ public class GestorCierreOrdenInspeccion {
     }
 
     public void buscarOrdenes(){
-    	for (OrdenDeInspeccion ordenDeInspeccion : this.cargarDatos.getOrdenesDeInspeccion() ) {
-    		if (ordenDeInspeccion.getEmpleado().equals(this.empleadoLogueado)) {
-    			for (Estado estado: this.cargarDatos.getEstados()) {
-    				if (estado.sosCompletamenteRealizada()) {
+        System.out.println(" " + this.cargarDatos.getOrdenesDeInspeccion().size() );
+        for (OrdenDeInspeccion ordenDeInspeccion : this.cargarDatos.getOrdenesDeInspeccion() ) {
+
+            if (ordenDeInspeccion.getEmpleado().equals(this.empleadoLogueado )&& estadoRealizado == null) {
+                 for (Estado estado: this.cargarDatos.getEstados() ) {
+    				if (estado.sosCompletamenteRealizada() ) {
     					this.estadoRealizado = estado;
-    					if (ordenDeInspeccion.getEstado().equals(estadoRealizado)) {
-    						ordenes.add(ordenDeInspeccion);
-    					}
-    				}
+                    }
     			}
+                if (ordenDeInspeccion.getEmpleado().equals(this.empleadoLogueado ) && ordenDeInspeccion.getEstado().equals(estadoRealizado)) {
+
+                    ordenes.add(ordenDeInspeccion);
+                }
     		}
     	}
     } 

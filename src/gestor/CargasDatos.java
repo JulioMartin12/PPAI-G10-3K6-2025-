@@ -133,11 +133,11 @@ public class CargasDatos {
         estaciones.add(estacion4);
         estaciones.add(estacion5);
         
-        OrdenDeInspeccion ordInspeccion1 = new OrdenDeInspeccion(001, LocalDateTime.of(2025, 5, 20, 9, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", carlos, estacion1, completamenteRealizada);
-        OrdenDeInspeccion ordInspeccion2 = new OrdenDeInspeccion(002, LocalDateTime.of(2025, 5, 20, 10, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", carlos, estacion1, completamenteRealizada);
-        OrdenDeInspeccion ordInspeccion3 = new OrdenDeInspeccion(003, LocalDateTime.of(2025, 5, 21, 9, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", lucia, estacion2, registrado);
-        OrdenDeInspeccion ordInspeccion4 = new OrdenDeInspeccion(004, LocalDateTime.of(2025, 5, 22, 7, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", lucia, estacion2, enAnalisis);
-        OrdenDeInspeccion ordInspeccion5 = new OrdenDeInspeccion(005, LocalDateTime.of(2025, 5, 23, 15, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", lucia, estacion2, enAnalisis);
+        OrdenDeInspeccion ordInspeccion1 = new OrdenDeInspeccion(001, LocalDateTime.of(2025, 5, 20, 9, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", silvia, estacion1, completamenteRealizada);
+        OrdenDeInspeccion ordInspeccion2 = new OrdenDeInspeccion(002, LocalDateTime.of(2025, 5, 20, 10, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", silvia, estacion2, completamenteRealizada);
+        OrdenDeInspeccion ordInspeccion3 = new OrdenDeInspeccion(003, LocalDateTime.of(2025, 5, 23, 20, 0), LocalDateTime.of(2025, 5, 20, 22, 0), "", carlos, estacion2, enAnalisis);
+        OrdenDeInspeccion ordInspeccion4 = new OrdenDeInspeccion(004, LocalDateTime.of(2025, 5, 22, 7, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", carlos, estacion2, enAnalisis);
+        OrdenDeInspeccion ordInspeccion5 = new OrdenDeInspeccion(005, LocalDateTime.of(2025, 5, 23, 15, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", silvia, estacion2, enAnalisis);
         
         ordenesDeInspeccion.add(ordInspeccion1);
         ordenesDeInspeccion.add(ordInspeccion2);
@@ -202,4 +202,14 @@ public class CargasDatos {
     public void setSesiones(List<Sesion> sesiones) {
         this.sesiones = sesiones;
     }
+
+
+    public Sesion enElsistema(){
+         for (Sesion sesion : sesiones) {
+             if(sesion.getFechaHoraHasta() == null)
+                 return sesion;
+
+         }
+       return null;
+   }
 }

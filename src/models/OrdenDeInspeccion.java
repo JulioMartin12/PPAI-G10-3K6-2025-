@@ -101,7 +101,7 @@ public class OrdenDeInspeccion {
     public void sosEmpleadoLogueado(){}
 
     public Estado validarEstado(Estado realizado){
-    	if (this.estado.getNombreEstado().compareTo(realizado.getNombreEstado())==0)
+    	if (this.estado.getNombre().compareTo(realizado.getNombre())==0)
     		return realizado;
     	else
     		return null;
