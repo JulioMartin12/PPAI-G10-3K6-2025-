@@ -26,11 +26,11 @@ public class CargasDatos {
 
 
     private void iniciarDatos() {
-    crearRoles();
+    crearTodo();
 
     }
 
-    private void crearRoles() {
+    private void crearTodo() {
         Rol administradorDeRed = new Rol("Administrador de Red", "Gestiona la infraestructura de red y la seguridad del sistema.");
         roles.add(administradorDeRed);
         Rol encargadoDeInstalaciones = new Rol("Encargado de Instalaciones", "Supervisa y coordina la instalación de equipos y sensores.");
@@ -134,7 +134,7 @@ public class CargasDatos {
         estaciones.add(estacion5);
         
         OrdenDeInspeccion ordInspeccion1 = new OrdenDeInspeccion(001, LocalDateTime.of(2025, 5, 20, 9, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", silvia, estacion1, completamenteRealizada);
-        OrdenDeInspeccion ordInspeccion2 = new OrdenDeInspeccion(002, LocalDateTime.of(2025, 5, 20, 10, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", silvia, estacion2, completamenteRealizada);
+        OrdenDeInspeccion ordInspeccion2 = new OrdenDeInspeccion(002, LocalDateTime.of(2025, 5, 20, 10, 0), LocalDateTime.of(2025, 4, 20, 11, 0), "", silvia, estacion2, completamenteRealizada);
         OrdenDeInspeccion ordInspeccion3 = new OrdenDeInspeccion(003, LocalDateTime.of(2025, 5, 23, 20, 0), LocalDateTime.of(2025, 5, 20, 22, 0), "", carlos, estacion2, enAnalisis);
         OrdenDeInspeccion ordInspeccion4 = new OrdenDeInspeccion(004, LocalDateTime.of(2025, 5, 22, 7, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", carlos, estacion2, enAnalisis);
         OrdenDeInspeccion ordInspeccion5 = new OrdenDeInspeccion(005, LocalDateTime.of(2025, 5, 23, 15, 0), LocalDateTime.of(2025, 5, 20, 11, 0), "", silvia, estacion2, enAnalisis);

@@ -4,6 +4,7 @@ import models.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -65,7 +66,6 @@ public class GestorCierreOrdenInspeccion {
                 this.sesionLogueado = sesion;
                 this.usuarioLogueado = sesion.getUsuario();
                 this.empleadoLogueado = this.usuarioLogueado.getEmpleado();
-                this.buscarOrdenes();
              return true;
             }
         }
@@ -73,21 +73,21 @@ public class GestorCierreOrdenInspeccion {
     }
 
     public void buscarOrdenes(){
-        System.out.println(" " + this.cargarDatos.getOrdenesDeInspeccion().size() );
+           for (Estado estado: this.cargarDatos.getEstados() ) {
+            if (estado.sosCompletamenteRealizada()) {
+                this.estadoRealizado = estado;
+            }
+        }
         for (OrdenDeInspeccion ordenDeInspeccion : this.cargarDatos.getOrdenesDeInspeccion() ) {
 
-            if (ordenDeInspeccion.getEmpleado().equals(this.empleadoLogueado )&& estadoRealizado == null) {
-                 for (Estado estado: this.cargarDatos.getEstados() ) {
-    				if (estado.sosCompletamenteRealizada() ) {
-    					this.estadoRealizado = estado;
-                    }
-    			}
-                if (ordenDeInspeccion.getEmpleado().equals(this.empleadoLogueado ) && ordenDeInspeccion.getEstado().equals(estadoRealizado)) {
-
+            if (ordenDeInspeccion.getEmpleado().equals(this.empleadoLogueado )&& estadoRealizado != null) {
+                if ( ordenDeInspeccion.getEstado().equals(estadoRealizado)) {
                     ordenes.add(ordenDeInspeccion);
+    			}
+
                 }
     		}
-    	}
+
     } 
 
     public void tomarOrdenSelec(){}
@@ -115,6 +115,15 @@ public class GestorCierreOrdenInspeccion {
     public void generarNotificacion(){}
 
     public void notificarResponsable(){}
+
+    public void ordenarXFechaDeFinalizacion(){
+        if(!getOrdenes().isEmpty()){
+            getOrdenes().sort(Comparator.comparing(OrdenDeInspeccion::getFechaHoraFinalizacion));
+            for (OrdenDeInspeccion ordenDeInspeccion : getOrdenes()) {
+                System.out.println("Número de orden: "+ordenDeInspeccion.getNumeroOrden()+" Fecha Finalización:"+ordenDeInspeccion.getFechaHoraFinalizacion() + " Nombre Estacion: " + ordenDeInspeccion.getEstacionSismologica().getNombre() + " Identificador Estacion: " + ordenDeInspeccion.getEstacionSismologica().getCodigoEstacion());
+            }
+        }
+    }
 
     public  void finCU(){}
 
