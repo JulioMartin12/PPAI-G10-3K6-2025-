@@ -12,6 +12,11 @@ public class OrdenDeInspeccion {
     private EstacionSismologica estacionSismologica;
     private Estado estado;
 
+
+    public OrdenDeInspeccion() {
+
+    }
+
     public OrdenDeInspeccion(double numeroOrden, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinalizacion, String observacionCierre) {
         this.numeroOrden = numeroOrden;
         this.fechaHoraInicio = fechaHoraInicio;
@@ -107,9 +112,13 @@ public class OrdenDeInspeccion {
     		return null;
     }
 
-    public  void obtenerDatosEstacion(){}
+    public  EstacionSismologica obtenerDatosEstacion(){
+        return getEstacionSismologica();
+    }
 
-    public  void actualizarEstado(){}
+    public  void actualizarEstado(Estado estado){
+        this.setEstado(estado);
+    }
 
     public void conocerEmpleado(){}
 
@@ -118,4 +127,13 @@ public class OrdenDeInspeccion {
     public void conocerEstado(){}
 
 
+    public boolean sosEmpleadoLogueado(Empleado empleado){
+
+        return this.empleado.equals(empleado);
+    }
+
+
+    public boolean sosOrdenSeleccionada(OrdenDeInspeccion orden){
+        return this.numeroOrden == orden.getNumeroOrden();
+    }
 }

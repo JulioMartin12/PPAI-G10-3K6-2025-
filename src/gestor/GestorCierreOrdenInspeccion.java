@@ -56,9 +56,18 @@ public class GestorCierreOrdenInspeccion {
 		this.estadoRealizado = estadoRealizado;
 	}
 
+    public OrdenDeInspeccion getOrdenSeleccionada() {
+        return ordenSeleccionada;
+    }
+
+    public void setOrdenSeleccionada(OrdenDeInspeccion ordenSeleccionada) {
+        this.ordenSeleccionada = ordenSeleccionada;
+    }
+
     public boolean opcionCerrarOrdenInspeccion() {
         return this.buscarEmpleadoLogueado();
     }
+
 
     public boolean buscarEmpleadoLogueado(){
         for (Sesion sesion : this.cargarDatos.getSesiones()){
@@ -82,6 +91,8 @@ public class GestorCierreOrdenInspeccion {
 
             if (ordenDeInspeccion.getEmpleado().equals(this.empleadoLogueado )&& estadoRealizado != null) {
                 if ( ordenDeInspeccion.getEstado().equals(estadoRealizado)) {
+                 /*   OrdenDeInspeccion orden = new OrdenDeInspeccion();
+                    orden.setNumeroOrden(ordenDeInspeccion.getNumeroOrden());*/
                     ordenes.add(ordenDeInspeccion);
     			}
 
@@ -90,11 +101,33 @@ public class GestorCierreOrdenInspeccion {
 
     } 
 
-    public void tomarOrdenSelec(){}
+    public void tomarOrdenSelec(int indice){
+        indice = indice - 1;
+        for (int i = 0; i < getOrdenes().size(); i++) {
+            if(indice == i){
+                this.setOrdenSeleccionada(ordenes.get(i));
+                System.out.println("Orden seleccionada " + ordenes.get(i));
+            }
 
-    public void tomarObservacion(){}
+        }
+    }
 
-    public void buscarOrdenSelect(){}
+    public void tomarObservacion(String observacion){
+        this.getOrdenSeleccionada().setObservacionCierre(observacion);
+        System.out.println(getOrdenSeleccionada());
+        System.out.println(getOrdenes());
+        this.buscarOrdenSelect();
+
+    }
+
+    public void buscarOrdenSelect(){
+
+        for (OrdenDeInspeccion ordenDeInspeccion : this.getOrdenes()) {
+            if(ordenDeInspeccion.equals(this.getOrdenSeleccionada())){
+                ordenDeInspeccion.setObservacionCierre(this.getOrdenSeleccionada().getObservacionCierre());
+            }
+        }
+    }
 
     public void habilitarBajaSismografo(){}
 
@@ -119,9 +152,13 @@ public class GestorCierreOrdenInspeccion {
     public void ordenarXFechaDeFinalizacion(){
         if(!getOrdenes().isEmpty()){
             getOrdenes().sort(Comparator.comparing(OrdenDeInspeccion::getFechaHoraFinalizacion));
+            int indice=1;
+            System.out.println("---Seleccione una Opcion----");
             for (OrdenDeInspeccion ordenDeInspeccion : getOrdenes()) {
-                System.out.println("Número de orden: "+ordenDeInspeccion.getNumeroOrden()+" Fecha Finalización:"+ordenDeInspeccion.getFechaHoraFinalizacion() + " Nombre Estacion: " + ordenDeInspeccion.getEstacionSismologica().getNombre() + " Identificador Estacion: " + ordenDeInspeccion.getEstacionSismologica().getCodigoEstacion());
+                System.out.println("Opcion "+indice+") Número de orden: "+ordenDeInspeccion.getNumeroOrden()+" Fecha Finalización:"+ordenDeInspeccion.getFechaHoraFinalizacion() + " Nombre Estacion: " + ordenDeInspeccion.getEstacionSismologica().getNombre() + " Identificador Estacion: " + ordenDeInspeccion.getEstacionSismologica().getCodigoEstacion());
+             indice ++;
             }
+            System.out.println("Opcion 0) Salir.");
         }
     }
 

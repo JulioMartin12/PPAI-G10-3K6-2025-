@@ -3,7 +3,7 @@ package models;
 public class Estado {
 
     private String nombre;
-    private String ambito;
+    private Object ambito;
     private String descripcion;
 
 
@@ -12,7 +12,7 @@ public class Estado {
         this.descripcion = descripcion;
     }
 
-    public Estado(String nombre, String descripcion , String ambito) {
+    public Estado(String nombre, String descripcion , Object ambito) {
         this.nombre = nombre;
         this.ambito = ambito;
         this.descripcion = descripcion;
@@ -26,7 +26,7 @@ public class Estado {
         this.nombre = nombre;
     }
 
-    public String getAmbito() {
+    public Object getAmbito() {
         return ambito;
     }
 
@@ -52,11 +52,19 @@ public class Estado {
     }
 
     public boolean sosCompletamenteRealizada() {
-    	return (this.getNombre() == "Completamente Realizada");
+    	return (this.getNombre().equals("Completamente Realizada"));
     }
     
     public boolean sosFueraDeServicio() {
-    	return (this.nombre == "Fuera de Servicio");
+    	return (this.getNombre().equals("Fuera de Servicio"));
+    }
+
+    public  boolean esAmbitoSismografo(Sismografo sismografo){
+        return this.getAmbito().equals(sismografo);
+    }
+
+    public boolean esCerrado(){
+        return this.getNombre().equals("Cerrado");
     }
 
 }

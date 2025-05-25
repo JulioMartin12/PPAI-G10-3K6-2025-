@@ -123,4 +123,8 @@ public class EstacionSismologica {
     }
 
     public void conoceSismografo() {}
+
+    public int obtenerIdentificadorSismografo(){
+         return this.getSismografo().getIdentificadorSismografo();
+    }
 }

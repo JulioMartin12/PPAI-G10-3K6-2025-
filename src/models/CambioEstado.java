@@ -78,4 +78,8 @@ public class CambioEstado {
 
     public void conoceEstado() {}
     public void conoceMotivoFueraServicio() {}
+
+    public boolean esEstadoActual(){
+        return this.getFechaHoraFin() != null;
+    }
 }

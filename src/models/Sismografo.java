@@ -10,15 +10,15 @@ public class Sismografo {
     private double nroSerie;
     private CambioEstado cambioEstado;
     private EstacionSismologica estacionSismologica;
-    private Estado estadoActual;
+    private Estado estado;
 
-    public Sismografo(LocalDateTime fechaAdquisicion, int identificadorSismografo, double nroSerie, CambioEstado cambioEstado, EstacionSismologica estacionSismologica, Estado estadoActual) {
+    public Sismografo(LocalDateTime fechaAdquisicion, int identificadorSismografo, double nroSerie, CambioEstado cambioEstado, EstacionSismologica estacionSismologica, Estado estado) {
         this.fechaAdquisicion = fechaAdquisicion;
         this.identificadorSismografo = identificadorSismografo;
         this.nroSerie = nroSerie;
         this.cambioEstado = cambioEstado;
         this.estacionSismologica = estacionSismologica;
-        this.estadoActual = estadoActual;
+        this.estado = estado;
     }
 
     public Sismografo(LocalDateTime fechaAdquisicion, int identificadorSismografo, double nroSerie) {
@@ -67,23 +67,27 @@ public class Sismografo {
         this.estacionSismologica = estacionSismologica;
     }
 
-    public Estado getEstadoActual() {
-        return estadoActual;
+    public Estado getestado() {
+        return estado;
     }
 
-    public void setEstadoActual(Estado estadoActual) {
-        this.estadoActual = estadoActual;
+    public void setestado(Estado estado) {
+        this.estado = estado;
     }
 
     public void conocerEstacionSismologica() {}
 
     public void conocerCambioEstado() {}
 
-    public void conocerEstadoActual() {}
+    public void conocerestado() {}
 
-    public  void actualizarEstado(){}
+    public  void actualizarEstado(Estado estado) {
+        this.setestado(estado) ;
+    }
 
-    public  void sosMiSismografo(){}
+    public  boolean sosMiSismografo(Sismografo sismografo){
+        return this.getEstacionSismologica().getSismografo().equals(sismografo);
+    }
 
 
 
@@ -95,7 +99,7 @@ public class Sismografo {
                 ", nroSerie=" + nroSerie +
                 ", cambioEstado=" + cambioEstado +
                 ", estacionSismologica=" + estacionSismologica +
-                ", estadoActual=" + estadoActual +
+                ", estado=" + estado +
                 '}';
     }
 }
