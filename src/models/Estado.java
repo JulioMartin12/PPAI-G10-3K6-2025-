@@ -44,6 +44,13 @@ public class Estado {
                 '}';
     }
 
+    public boolean sosCompletamenteRealizada() {
+    	return (this.nombre == "Completamente Realizada");
+    }
+    
+    public boolean sosFueraDeServicio() {
+    	return (this.nombre == "Fuera de Servicio");
+    }
 
 }
 

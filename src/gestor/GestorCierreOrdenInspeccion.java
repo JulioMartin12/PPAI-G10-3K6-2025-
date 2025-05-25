@@ -3,6 +3,8 @@ package gestor;
 import models.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class GestorCierreOrdenInspeccion {
@@ -16,17 +18,40 @@ public class GestorCierreOrdenInspeccion {
     private String observacion;
     private  Sesion sesionLogueado;
     private  Usuario usuarioLogueado;
+    private List<OrdenDeInspeccion> ordenes = new ArrayList<>();
+    private Estado estadoRealizado;
 
 
 
-    public GestorCierreOrdenInspeccion() {
+
+
+
+
+	public GestorCierreOrdenInspeccion() {
         cargarDatos = new CargasDatos();
     }
+	
+    public List<OrdenDeInspeccion> getOrdenes() {
+		return ordenes;
+	}
+
+
+	public void setOrdenes(List<OrdenDeInspeccion> ordenes) {
+		this.ordenes = ordenes;
+	}
 
 
     public LocalDateTime getFechaActual() {
         return fechaActual;
     }
+    
+	public Estado getEstadoRealizado() {
+		return estadoRealizado;
+	}
+
+	public void setEstadoRealizado(Estado estadoRealizado) {
+		this.estadoRealizado = estadoRealizado;
+	}
 
     public boolean opcionCerrarOrdenInspeccion() {
         return this.buscarEmpleadoLogueado();
@@ -45,8 +70,19 @@ public class GestorCierreOrdenInspeccion {
     }
 
     public void buscarOrdenes(){
-
-    }
+    	for (OrdenDeInspeccion ordenDeInspeccion : this.cargarDatos.getOrdenesDeInspeccion() ) {
+    		if (ordenDeInspeccion.getEmpleado().equals(this.empleadoLogueado)) {
+    			for (Estado estado: this.cargarDatos.getEstados()) {
+    				if (estado.sosCompletamenteRealizada()) {
+    					this.estadoRealizado = estado;
+    					if (ordenDeInspeccion.getEstado().equals(estadoRealizado)) {
+    						ordenes.add(ordenDeInspeccion);
+    					}
+    				}
+    			}
+    		}
+    	}
+    } 
 
     public void tomarOrdenSelec(){}
 
