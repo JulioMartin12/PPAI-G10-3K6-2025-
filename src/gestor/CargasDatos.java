@@ -5,6 +5,7 @@ import models.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CargasDatos {
     List<Rol> roles = new ArrayList<>();
@@ -17,6 +18,7 @@ public class CargasDatos {
     List<Sismografo> sismografos = new ArrayList<>();
     List<CambioEstado> cambioEstados = new ArrayList<>();
     List<OrdenDeInspeccion> ordenesDeInspeccion = new ArrayList<>();
+
 
     public CargasDatos() {
 
@@ -145,6 +147,37 @@ public class CargasDatos {
         ordenesDeInspeccion.add(ordInspeccion4);
         ordenesDeInspeccion.add(ordInspeccion5);
 
+        Sismografo sismografo1 = new Sismografo(LocalDateTime.of(2025,4,19,20,0),1,1002003, new CambioEstado(LocalDateTime.of(2025,4,19,20,0),null,silvia,fueraDeServicio,new MotivoFueraServicio(falloAlimentacion,"Se rompio la fuente de energia")),estacion1, fueraDeServicio);
+        Sismografo sismografo2 = new Sismografo(LocalDateTime.of(2025,4,19,19,0),2,1002004, new CambioEstado(LocalDateTime.of(2025,4,19,20,0),null,silvia,fueraDeServicio,new MotivoFueraServicio(falloAlimentacion,"Se rompio el transformador")),estacion1, fueraDeServicio);
+        Sismografo sismografo3 = new Sismografo(LocalDateTime.of(2025,4,19,18,0),3,1002005, new CambioEstado(LocalDateTime.of(2025,4,19,20,0),null,silvia,fueraDeServicio,new MotivoFueraServicio(falloAlimentacion,"Se corto la luz")),estacion1, fueraDeServicio);
+        Sismografo sismografo4 = new Sismografo(LocalDateTime.of(2025,4,19,17,0),4,1002006, new CambioEstado(LocalDateTime.of(2025,4,19,20,0),null,silvia,fueraDeServicio,new MotivoFueraServicio(falloAlimentacion,"Se corto el cable de alimentacion")),estacion1, fueraDeServicio);
+        Sismografo sismografo5 = new Sismografo(LocalDateTime.of(2025,4,19,16,0),5,1002007, new CambioEstado(LocalDateTime.of(2025,4,19,20,0),null,silvia,fueraDeServicio,new MotivoFueraServicio(falloAlimentacion,"Se prendio fuego toda la estacion")),estacion1, fueraDeServicio);
+
+        sismografos.add(sismografo1);
+        sismografos.add(sismografo2);
+        sismografos.add(sismografo3);
+        sismografos.add(sismografo4);
+        sismografos.add(sismografo5);
+
+        estacion1.setSismografo(sismografo1);
+        estacion2.setSismografo(sismografo2);
+        estacion3.setSismografo(sismografo3);
+        estacion4.setSismografo(sismografo4);
+        estacion5.setSismografo(sismografo5);
+        /**
+         *     private LocalDateTime fechaAdquisicion;
+         *     private int identificadorSismografo;
+         *     private double nroSerie;
+         *     private CambioEstado cambioEstado;
+         *     private EstacionSismologica estacionSismologica;
+         *     private Estado estado;
+         *
+         *     private LocalDateTime fechaHoraInicio;
+         *     private LocalDateTime fechaHoraFin;
+         *     private Empleado responsable;
+         *     private Estado estado;
+         *     private MotivoFueraServicio motivoFueraServicio;
+         */
 
     }
     public List<OrdenDeInspeccion> getOrdenesDeInspeccion() {
@@ -211,5 +244,17 @@ public class CargasDatos {
 
          }
        return null;
+   }
+   public List<MotivoTipo> crearListaDeSeleccionados(List<MotivoTipo> motivosTipoParaSeleccion){
+       Random random = new Random();
+       int cantidadAleatoria = random.nextInt(this.getMotivos().size());
+       for (int k = 0; k < cantidadAleatoria; k++) {
+           Random random1 = new Random();
+           MotivoTipo motivoSeleccionado = motivos.get(random1.nextInt(motivos.size()));
+           motivosTipoParaSeleccion.add(motivoSeleccionado);
+       }
+       return motivosTipoParaSeleccion;
+//       tomarOrdenSelec(indiceAleatorio);
+//       solicitarObservacionDeCierre();
    }
 }

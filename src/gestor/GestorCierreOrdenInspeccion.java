@@ -1,5 +1,6 @@
 package gestor;
 
+import boundary.PantallaCierreOrdenInspeccion;
 import models.*;
 
 import java.time.LocalDateTime;
@@ -21,8 +22,7 @@ public class GestorCierreOrdenInspeccion {
     private  Usuario usuarioLogueado;
     private List<OrdenDeInspeccion> ordenes = new ArrayList<>();
     private Estado estadoRealizado;
-
-
+    private List<MotivoTipo> motivosSeleccionados = new ArrayList<>();
 
 
 
@@ -32,6 +32,8 @@ public class GestorCierreOrdenInspeccion {
 
 	public GestorCierreOrdenInspeccion() {
         cargarDatos = new CargasDatos();
+        motivosSeleccionados = cargarDatos.getMotivos();
+        System.out.println(motivosSeleccionados);
     }
 	
     public List<OrdenDeInspeccion> getOrdenes() {
@@ -55,6 +57,17 @@ public class GestorCierreOrdenInspeccion {
 	public void setEstadoRealizado(Estado estadoRealizado) {
 		this.estadoRealizado = estadoRealizado;
 	}
+
+    public PantallaCierreOrdenInspeccion getPantallaCierreOrdenInspeccion() {
+        return pantallaCierreOrdenInspeccion;
+    }
+
+    public void setPantallaCierreOrdenInspeccion(PantallaCierreOrdenInspeccion pantallaCierreOrdenInspeccion) {
+        this.pantallaCierreOrdenInspeccion = pantallaCierreOrdenInspeccion;
+    }
+
+    private PantallaCierreOrdenInspeccion pantallaCierreOrdenInspeccion;
+
 
     public OrdenDeInspeccion getOrdenSeleccionada() {
         return ordenSeleccionada;
@@ -129,7 +142,9 @@ public class GestorCierreOrdenInspeccion {
         }
     }
 
-    public void habilitarBajaSismografo(){}
+//    public void habilitarBajaSismografo(){
+//        pantallaCierreOrdenInspeccion.mostrarMotivosTipo();
+//    }
 
     public void tomarConfirmacion(){}
 
@@ -155,7 +170,7 @@ public class GestorCierreOrdenInspeccion {
             int indice=1;
             System.out.println("---Seleccione una Opcion----");
             for (OrdenDeInspeccion ordenDeInspeccion : getOrdenes()) {
-                System.out.println("Opcion "+indice+") Número de orden: "+ordenDeInspeccion.getNumeroOrden()+" Fecha Finalización:"+ordenDeInspeccion.getFechaHoraFinalizacion() + " Nombre Estacion: " + ordenDeInspeccion.getEstacionSismologica().getNombre() + " Identificador Estacion: " + ordenDeInspeccion.getEstacionSismologica().getCodigoEstacion());
+                System.out.println("Opcion "+indice+") Número de orden: "+ordenDeInspeccion.getNumeroOrden()+" Fecha Finalización:"+ordenDeInspeccion.getFechaHoraFinalizacion() + " Nombre Estacion: " + ordenDeInspeccion.getEstacionSismologica().getNombre() + " Identificador Sismografo: " + ordenDeInspeccion.getEstacionSismologica().getSismografo().getIdentificadorSismografo());
              indice ++;
             }
             System.out.println("Opcion 0) Salir.");

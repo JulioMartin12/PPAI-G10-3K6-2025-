@@ -1,7 +1,9 @@
 package boundary;
 
 import gestor.GestorCierreOrdenInspeccion;
+import models.MotivoTipo;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,7 +17,7 @@ public class PantallaCierreOrdenInspeccion {
             System.out.println("Logueado");
             if(gestor.buscarEmpleadoLogueado()) {
                 gestor.buscarOrdenes();
-                this.mostarOrdenesOrdenados();
+                this.mostrarOrdenesOrdenados();
             }else{System.out.println("No SOS EL LOGUEADO");}
          }else {
             System.out.println("No SOS EL LOGUEADO");
@@ -23,9 +25,9 @@ public class PantallaCierreOrdenInspeccion {
 
     }
 
-    public void mostarMernsajeBusquedaVacia(){}
+    public void mostrarMensajeBusquedaVacia(){}
 
-    public void mostarOrdenesOrdenados(){
+    public void mostrarOrdenesOrdenados(){
 
              gestor.ordenarXFechaDeFinalizacion();
             System.out.println("Ingrese una Opcion: ");
@@ -58,7 +60,14 @@ public class PantallaCierreOrdenInspeccion {
 
     public void tomarConfirmacion(){}
 
-    public void mostrarMotivosTipo(){}
+    public void mostrarMotivosTipoParaSeleccion(List<MotivoTipo> motivos){
+        int i = 1;
+        for (MotivoTipo motivo : motivos){
+            System.out.println(i + " - " + motivo.getNombre() +" Descripcion: "+ motivo.getDescripcion());
+        }
+    }
+
+
 
     public void solicitarConfirmacion(){}
 
